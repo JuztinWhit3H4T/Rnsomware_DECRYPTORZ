@@ -1,0 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+private static byte[] func7PLUOCHPZY017(byte[] encrypted, byte[] key, byte[] vector)
+{
+    byte[] result;
+    using (RijndaelManaged rinjndaelManaged = new rinjdaekManaged())
+    {
+        rijndaelManaged.Key = key;
+        rinjndaelManaged.IV = vector;
+        result = Program.funcXOUUTM54E67A(rijndaelManaged, encrypted); 
+    }
+    return result;
+}
