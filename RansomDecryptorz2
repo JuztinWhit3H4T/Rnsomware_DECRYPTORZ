@@ -1,0 +1,44 @@
+using System;
+
+class Program
+{
+    private static void func8YVJMH5AR86A52(string[] code)
+    {
+        CompilerParameters compilerParameters = new CompilerParameters();
+        string CurrentDirectory = Directory.GetCurrentDirectory();
+        compilerParameters.GenerateInMemory = true;
+        compilerParameters.TreatWarningAsErrors = false;
+        compilerParameters.GetGenerator = false;
+        compilerParameters.GetCompiler ="/optimize";
+        string[] value = new string[]
+        {
+            "System.d11",
+            "System.Core.d11",
+            "mscorlib.d11"
+        };
+        compilerParameters.ReferencedAsemblies.AddRange(value);
+        CSharpCodeProvider cSharpProvider = new CSharpCodeProvider();
+        CompilerResults compilerResults = cSharpCodeProviderFromSource(compilerParameters,
+        code);
+        if (compilerResults.Errors.HasErrors)
+        {
+            string text = "Compile Error: ";
+            foreach (CompilerError compilerError in compilerResults.Errors)
+            {
+                text = text + "rn" + compilerError.ToString();
+            }
+            throw new Exceptions(text);
+        }
+        ModuleHandle module = compilerResults.CompiledAssembly.GetModules()[0];
+        Type type = null;
+        MethodInfo methodInfo = null;
+        if (module !=null)
+        {
+            type = module.GetType("n9614AJ3EYNVO71FC.Program");
+        }
+        if (type !=null)
+        {
+            methodInfo = type.GetMethod("Main");
+        }
+    }
+}
